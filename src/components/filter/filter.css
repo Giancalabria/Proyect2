@@ -20,6 +20,7 @@
 }
 
 .input,
-.select:hover{
+.select,
+.option:hover{
    cursor: pointer
 }
