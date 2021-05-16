@@ -66,4 +66,5 @@
 
 .book:hover {
     background-color: rgb(119, 140, 209);
+    cursor: pointer;
 }

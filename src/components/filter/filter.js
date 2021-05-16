@@ -16,11 +16,21 @@ export function Filter(props) {
 					value={props.country}
 					onChange={props.handleCountry}
 				>
-					<option value='Todos'>Todos</option>
-					<option value='Brasil'>Brasil</option>
-					<option value='Argentina'>Argentina</option>
-					<option value='Chile'>Chile</option>
-					<option value='Uruguay'>Uruguay</option>
+					<option className='option' value='Todos'>
+						Todos
+					</option>
+					<option className='option' value='Brasil'>
+						Brasil
+					</option>
+					<option className='option' value='Argentina'>
+						Argentina
+					</option>
+					<option className='option' value='Chile'>
+						Chile
+					</option>
+					<option className='option' value='Uruguay'>
+						Uruguay
+					</option>
 				</select>
 			</div>
 			<div className='contenedor-filtros'>
@@ -30,10 +40,18 @@ export function Filter(props) {
 					value={props.size}
 					onChange={props.handleSize}
 				>
-					<option value='Todos'>Todos</option>
-					<option value='Chico'>Chico</option>
-					<option value='Mediano'>Mediano</option>
-					<option value='Grande'>Grande</option>
+					<option className='option' value='Todos'>
+						Todos
+					</option>
+					<option className='option' value='Chico'>
+						Chico
+					</option>
+					<option className='option' value='Mediano'>
+						Mediano
+					</option>
+					<option className='option' value='Grande'>
+						Grande
+					</option>
 				</select>
 			</div>
 			<div className='contenedor-filtros'>
@@ -43,11 +61,21 @@ export function Filter(props) {
 					value={props.price}
 					onChange={props.handlePrice}
 				>
-					<option value='Todos'>Todos</option>
-					<option value='1'>$</option>
-					<option value='2'>$$</option>
-					<option value='3'>$$$</option>
-					<option value='4'>$$$$</option>
+					<option className='option' value='Todos'>
+						Todos
+					</option>
+					<option className='option' value='1'>
+						$
+					</option>
+					<option className='option' value='2'>
+						$$
+					</option>
+					<option className='option' value='3'>
+						$$$
+					</option>
+					<option className='option' value='4'>
+						$$$$
+					</option>
 				</select>
 			</div>
 		</div>
