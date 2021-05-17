@@ -8,8 +8,9 @@
 }
 
 .contenedor-filtros {
-    height: 40px;
-    margin-top: 10px;
+    height: 100%;
+    padding-top: 25px;
+    padding-bottom: 25px;
     width: 250px;
 }
 
