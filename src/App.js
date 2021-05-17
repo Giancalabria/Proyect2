@@ -9,11 +9,15 @@ import React from 'react'
 
 function App() {
 	const [country, setCountry] = useState('select')
-	const handleCountry = (e) => setCountry(e.target.value)
+	const handlerCountry = (e) => setCountry(e.target.value)
 	const [size, setSize] = useState('select')
-	const handleSize = (e) => setSize(e.target.value)
+	const handlerSize = (e) => setSize(e.target.value)
 	const [price, setPrice] = useState('select')
-	const handlePrice = (e) => setPrice(e.target.value)
+	const handlerPrice = (e) => setPrice(e.target.value)
+	const [dateFrom, setDateFrom] = useState('')
+	const handlerDateFrom = (e) => setDateFrom(e.target.value)
+	const [dateTo, setDateTo] = useState('')
+	const handlerDateTo = (e) => setDateTo(e.target.value)
 	const newHotelsData = hotelsData.filter((hotel) => {
 		return (
 			(country === 'todos' || country === 'select'
@@ -35,11 +39,11 @@ function App() {
 			<Header />
 			<Filter
 				country={country}
-				handleCountry={handleCountry}
+				handlerCountry={handlerCountry}
 				size={size}
-				handleSize={handleSize}
+				handlerSize={handlerSize}
 				price={price}
-				handlePrice={handlePrice}
+				handlerPrice={handlerPrice}
 			/>
 			<div className='hoteles'>
 				<Results newHotelsData={newHotelsData} price={price} />

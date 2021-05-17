@@ -7,7 +7,7 @@ export function Results(props) {
 		for (let i = 0; i + 1 === props.price; i++) {
 			return (
 				<div>
-					<img className='dolar-img' src='./images/price.svg' />
+					<img className='dolar-img' src='./images/price.svg' alt='precio' />
 				</div>
 			)
 		}

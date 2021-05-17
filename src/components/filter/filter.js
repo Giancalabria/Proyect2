@@ -13,7 +13,7 @@ export function Filter(props) {
 				<select
 					className='select'
 					value={props.country}
-					onChange={props.handleCountry}
+					onChange={props.handlerCountry}
 				>
 					<option className='option' value='select' disabled>
 						Seleccione un pais
@@ -21,16 +21,16 @@ export function Filter(props) {
 					<option className='option' value='todos'>
 						Todos
 					</option>
-					<option className='option' value='brasil'>
+					<option className='option' value='Brasil'>
 						Brasil
 					</option>
-					<option className='option' value='argentina'>
+					<option className='option' value='Argentina'>
 						Argentina
 					</option>
-					<option className='option' value='chile'>
+					<option className='option' value='Chile'>
 						Chile
 					</option>
-					<option className='option' value='uruguay'>
+					<option className='option' value='Uruguay'>
 						Uruguay
 					</option>
 				</select>
@@ -39,7 +39,7 @@ export function Filter(props) {
 				<select
 					className='select'
 					value={props.size}
-					onChange={props.handleSize}
+					onChange={props.handlerSize}
 				>
 					<option className='option' value='select' disabled>
 						Seleccione un tamaño
@@ -62,7 +62,7 @@ export function Filter(props) {
 				<select
 					className='select'
 					value={props.price}
-					onChange={props.handlePrice}
+					onChange={props.handlerPrice}
 				>
 					<option className='option' value='select' disabled>
 						Seleccione un precio
