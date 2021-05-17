@@ -57,14 +57,14 @@
     font-family: 'IBM Plex Sans', sans-serif;
     font-weight: bold;
     font-size: 20px;
-    background-color: rgb(48, 82, 192);
+    background-color: #22a85a93;
     border-bottom: none;
     border-right: none;
     border-left: none;
-    color: #ededee;
+    color: #ffffffff;
 }
 
 .book:hover {
-    background-color: rgb(119, 140, 209);
+    background-color: #59af7d93;
     cursor: pointer;
 }
