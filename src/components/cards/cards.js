@@ -2,8 +2,12 @@ import './cards.css'
 
 export function Cards(props) {
 	function priceCalculator() {
-		for (let i = 0; i < props.price; i++) {
-			return <img src='./images/dolar.svg' className='dolar-img'></img>
+		for (let i = 0; i === props.price; i++) {
+			return (
+				<div>
+					<img className='dolar-img' src='./images/price.svg' />
+				</div>
+			)
 		}
 	}
 	function booked() {
