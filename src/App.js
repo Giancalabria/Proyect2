@@ -40,7 +40,7 @@ function App() {
 				handlePrice={handlePrice}
 			/>
 			<div className='hoteles'>
-				<Results newHotelsData={newHotelsData} />
+				<Results newHotelsData={newHotelsData} price={price} />
 			</div>
 			<Footer />
 		</div>

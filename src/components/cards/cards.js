@@ -1,15 +1,6 @@
 import './cards.css'
 
 export function Cards(props) {
-	function priceCalculator() {
-		for (let i = 0; i === props.price; i++) {
-			return (
-				<div>
-					<img className='dolar-img' src='./images/price.svg' />
-				</div>
-			)
-		}
-	}
 	function booked() {
 		alert(` El hotel "${props.name}" se ha reservado satisfactoriamente`)
 	}
@@ -27,7 +18,7 @@ export function Cards(props) {
 			<div className='room-div'>
 				<img src='./images/room.svg' className='room-img'></img>
 				<p className='extra-info rooms-text'>{props.rooms}</p>
-				<div>{priceCalculator()}</div>
+				<div>{props.priceCalculator}</div>
 			</div>
 			<button className='book' onClick={booked}>
 				Reservá ahora

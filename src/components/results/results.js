@@ -3,6 +3,15 @@ import { useState, React } from 'react'
 import { Cards } from '../cards/cards'
 import './results.css'
 export function Results(props) {
+	function priceCalculator() {
+		for (let i = 0; i + 1 === props.price; i++) {
+			return (
+				<div>
+					<img className='dolar-img' src='./images/price.svg' />
+				</div>
+			)
+		}
+	}
 	return (
 		<div className='results'>
 			{props.newHotelsData.map((objeto, index) => (
@@ -15,6 +24,7 @@ export function Results(props) {
 					country={objeto.country}
 					rooms={objeto.rooms}
 					price={objeto.price}
+					priceCalculator={priceCalculator}
 				/>
 			))}
 		</div>
