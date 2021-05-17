@@ -15,22 +15,22 @@ export function Filter(props) {
 					value={props.country}
 					onChange={props.handleCountry}
 				>
-					<option className='option' value='Todos' disabled>
+					<option className='option' value='select' disabled>
 						Seleccione un pais
 					</option>
-					<option className='option' value='Todos'>
+					<option className='option' value='todos'>
 						Todos
 					</option>
-					<option className='option' value='Brasil'>
+					<option className='option' value='brasil'>
 						Brasil
 					</option>
-					<option className='option' value='Argentina'>
+					<option className='option' value='argentina'>
 						Argentina
 					</option>
-					<option className='option' value='Chile'>
+					<option className='option' value='chile'>
 						Chile
 					</option>
-					<option className='option' value='Uruguay'>
+					<option className='option' value='uruguay'>
 						Uruguay
 					</option>
 				</select>
@@ -41,19 +41,19 @@ export function Filter(props) {
 					value={props.size}
 					onChange={props.handleSize}
 				>
-					<option className='option' value='Todos' disabled>
+					<option className='option' value='select' disabled>
 						Seleccione un tamaño
 					</option>
-					<option className='option' value='Todos'>
+					<option className='option' value='todos'>
 						Todos
 					</option>
-					<option className='option' value='Chico'>
+					<option className='option' value='chico'>
 						Chico
 					</option>
-					<option className='option' value='Mediano'>
+					<option className='option' value='mediano'>
 						Mediano
 					</option>
-					<option className='option' value='Grande'>
+					<option className='option' value='grande'>
 						Grande
 					</option>
 				</select>
@@ -64,10 +64,10 @@ export function Filter(props) {
 					value={props.price}
 					onChange={props.handlePrice}
 				>
-					<option className='option' value='Todos' disabled>
+					<option className='option' value='select' disabled>
 						Seleccione un precio
 					</option>
-					<option className='option' value='Todos'>
+					<option className='option' value='todos'>
 						Todos
 					</option>
 					<option className='option' value='1'>

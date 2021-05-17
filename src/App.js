@@ -8,23 +8,25 @@ import { Results } from './components/results/results'
 import React from 'react'
 
 function App() {
-	const [country, setCountry] = useState('Todos')
+	const [country, setCountry] = useState('select')
 	const handleCountry = (e) => setCountry(e.target.value)
-	const [size, setSize] = useState('Todos')
+	const [size, setSize] = useState('select')
 	const handleSize = (e) => setSize(e.target.value)
-	const [price, setPrice] = useState('Todos')
+	const [price, setPrice] = useState('select')
 	const handlePrice = (e) => setPrice(e.target.value)
 	const newHotelsData = hotelsData.filter((hotel) => {
 		return (
-			(country === 'Todos' ? true : country === hotel.country) &&
-			(size === 'Todos'
+			(country === 'todos' || country === 'select'
 				? true
-				: size === 'Chico'
+				: country === hotel.country) &&
+			(size === 'todos' || size === 'select'
+				? true
+				: size === 'chico'
 				? hotel.rooms < 11
-				: size === 'Mediano'
+				: size === 'mediano'
 				? hotel.rooms > 10 && hotel.rooms < 21
 				: hotel.rooms > 20) &&
-			(price === 'Todos' ? true : price == hotel.price)
+			(price === 'todos' || price === 'select' ? true : price == hotel.price)
 		)
 	})
 
