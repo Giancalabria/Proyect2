@@ -10,12 +10,14 @@ export function Filter(props) {
 				<input className='input' type='date'></input>
 			</div>
 			<div className='contenedor-filtros'>
-				<p>País</p>
 				<select
 					className='select'
 					value={props.country}
 					onChange={props.handleCountry}
 				>
+					<option className='option' value='Todos' disabled>
+						Seleccione un pais
+					</option>
 					<option className='option' value='Todos'>
 						Todos
 					</option>
@@ -34,12 +36,14 @@ export function Filter(props) {
 				</select>
 			</div>
 			<div className='contenedor-filtros'>
-				<p>Tamaño</p>
 				<select
 					className='select'
 					value={props.size}
 					onChange={props.handleSize}
 				>
+					<option className='option' value='Todos' disabled>
+						Seleccione un tamaño
+					</option>
 					<option className='option' value='Todos'>
 						Todos
 					</option>
@@ -55,12 +59,14 @@ export function Filter(props) {
 				</select>
 			</div>
 			<div className='contenedor-filtros'>
-				<p>Precio</p>
 				<select
 					className='select'
 					value={props.price}
 					onChange={props.handlePrice}
 				>
+					<option className='option' value='Todos' disabled>
+						Seleccione un precio
+					</option>
 					<option className='option' value='Todos'>
 						Todos
 					</option>
