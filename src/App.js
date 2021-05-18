@@ -49,7 +49,7 @@ function App() {
 
 	return (
 		<div>
-			<Header />
+			<Header dateFrom={dateFrom} />
 			<Filter
 				country={country}
 				handlerCountry={handlerCountry}

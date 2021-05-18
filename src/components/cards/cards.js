@@ -26,14 +26,16 @@ export function Cards(props) {
 				></img>
 				<p className='extra-info rooms-text'>{props.rooms}</p>
 			</div>
-			{priceQuantity.map((price, index) => (
-				<img
-					key={index}
-					className='dolar-image'
-					src='./images/dolar.svg'
-					alt='Icono del simbolo peso'
-				/>
-			))}
+			<div className='image-div'>
+				{priceQuantity.map((price, index) => (
+					<img
+						key={index}
+						className='dolar-img'
+						src='./images/dolar.svg'
+						alt='Icono del simbolo peso'
+					/>
+				))}
+			</div>
 			<button className='book' onClick={props.onBooked}>
 				Reservá ahora
 			</button>
