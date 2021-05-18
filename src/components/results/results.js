@@ -1,8 +1,10 @@
-import { hotelsData } from '../data/data.js'
-import { useState, React } from 'react'
+import React from 'react'
 import { Cards } from '../cards/cards'
 import './results.css'
 export function Results(props) {
+	function onBooked(name) {
+		alert(` El hotel "${name}" se ha reservado satisfactoriamente`)
+	}
 	return (
 		<div className='results'>
 			{props.newHotelsData.map((objeto, index) => (
@@ -15,6 +17,7 @@ export function Results(props) {
 					country={objeto.country}
 					rooms={objeto.rooms}
 					price={objeto.price}
+					onBooked={() => onBooked(objeto.name)}
 				/>
 			))}
 		</div>

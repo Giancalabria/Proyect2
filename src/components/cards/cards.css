@@ -29,8 +29,8 @@
 }
 
 .location-img,
-.room-img,
-.dolar-img{
+.room-img
+{
     width: 25px;
     height: 25px;
     display: flex ;
@@ -67,4 +67,8 @@
 .book:hover {
     background-color: #59af7d93;
     cursor: pointer;
+}
+.dolar-img {
+    width: 20px;
+    height: 20px;
 }

@@ -12,7 +12,12 @@ export function Filter(props) {
 				></input>
 			</div>
 			<div className='contenedor-filtros'>
-				<input className='input' type='date'></input>
+				<input
+					className='input'
+					type='date'
+					value={props.dateTo}
+					onChange={props.handlerDateTo}
+				></input>
 			</div>
 			<div className='contenedor-filtros'>
 				<select
