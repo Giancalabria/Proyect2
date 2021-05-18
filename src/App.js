@@ -30,7 +30,9 @@ function App() {
 				: size === 'mediano'
 				? hotel.rooms > 10 && hotel.rooms < 21
 				: hotel.rooms > 20) &&
-			(price === 'todos' || price === 'select' ? true : price == hotel.price)
+			(price === 'todos' || price === 'select'
+				? true
+				: parseInt(price, 0) === hotel.price)
 		)
 	})
 
