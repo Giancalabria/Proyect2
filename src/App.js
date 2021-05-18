@@ -19,7 +19,7 @@ function App() {
 		console.log(new Date(e.target.value + ' 00:00'))
 		if (
 			new Date(e.target.value + ' 00:00') < new Date(dateFrom + ' 00:00') ||
-			new Date(dateFrom + ' 00:00') > new Date(dateTo + ' 00:00')
+			new Date(e.targe.value + ' 00:00') > new Date(dateTo + ' 00:00')
 		) {
 			alert('La fecha seleccionada es invalida, intentelo nuevamente')
 		} else {
