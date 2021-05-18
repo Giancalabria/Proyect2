@@ -4,7 +4,6 @@ export function Cards(props) {
 	function booked() {
 		alert(` El hotel "${props.name}" se ha reservado satisfactoriamente`)
 	}
-
 	return (
 		<div className='cards'>
 			<img className='image' src={props.photo} alt='Foto del hotel'></img>

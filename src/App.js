@@ -15,9 +15,20 @@ function App() {
 	const [price, setPrice] = useState('select')
 	const handlerPrice = (e) => setPrice(e.target.value)
 	const [dateFrom, setDateFrom] = useState('')
-	const handlerDateFrom = (e) => setDateFrom(e.target.value)
+	const handlerDateFrom = (e) => {
+		console.log(new Date(e.target.value + ' 00:00'))
+		if (
+			new Date(e.target.value + ' 00:00') < new Date(dateFrom + ' 00:00') ||
+			new Date(dateFrom + ' 00:00') > new Date(dateTo + ' 00:00')
+		) {
+			alert('La fecha seleccionada es invalida, intentelo nuevamente')
+		} else {
+			setDateFrom(e.target.value)
+		}
+	}
 	const [dateTo, setDateTo] = useState('')
 	const handlerDateTo = (e) => setDateTo(e.target.value)
+
 	const newHotelsData = hotelsData.filter((hotel) => {
 		return (
 			(country === 'todos' || country === 'select'
@@ -36,6 +47,16 @@ function App() {
 		)
 	})
 
+	const disponibilidad = []
+	newHotelsData.map((hotel) =>
+		disponibilidad.push({
+			'nombre:': hotel.name,
+			'desde:': new Date(hotel.availabilityFrom),
+			'hasta:': new Date(hotel.availabilityTo),
+		})
+	)
+	console.table(disponibilidad)
+
 	return (
 		<div>
 			<Header />
@@ -46,6 +67,8 @@ function App() {
 				handlerSize={handlerSize}
 				price={price}
 				handlerPrice={handlerPrice}
+				dateFrom={dateFrom}
+				handlerDateFrom={handlerDateFrom}
 			/>
 			<div className='hoteles'>
 				<Results newHotelsData={newHotelsData} price={price} />

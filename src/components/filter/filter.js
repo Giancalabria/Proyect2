@@ -4,7 +4,12 @@ export function Filter(props) {
 	return (
 		<div className='filter'>
 			<div className='contenedor-filtros'>
-				<input className='input' type='date'></input>
+				<input
+					className='input'
+					type='date'
+					value={props.dateFrom}
+					onChange={props.handlerDateFrom}
+				></input>
 			</div>
 			<div className='contenedor-filtros'>
 				<input className='input' type='date'></input>
