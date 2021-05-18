@@ -4,7 +4,7 @@ import { Cards } from '../cards/cards'
 import './results.css'
 export function Results(props) {
 	function priceCalculator() {
-		for (let i = 0; i + 1 === props.price; i++) {
+		for (let i = 1; i <= props.price; i++) {
 			return (
 				<div>
 					<img className='dolar-img' src='./images/price.svg' alt='precio' />
