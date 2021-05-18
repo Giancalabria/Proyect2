@@ -15,7 +15,6 @@ export function Results(props) {
 					country={objeto.country}
 					rooms={objeto.rooms}
 					price={objeto.price}
-					priceCalculator={priceCalculator}
 				/>
 			))}
 		</div>

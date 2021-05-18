@@ -4,15 +4,7 @@ export function Cards(props) {
 	function booked() {
 		alert(` El hotel "${props.name}" se ha reservado satisfactoriamente`)
 	}
-	// function priceCalculator() {
-	// 	let cantImage = ''
-	// 	for (let i = 1; i <= props.price; i++) {
-	// 		cantImage += (
-	// 			<img className='dolar-img' src='./images/price.svg' alt='precio' />
-	// 		)
-	// 	}
-	// 	return cantImage
-	// }
+
 	return (
 		<div className='cards'>
 			<img className='image' src={props.photo} alt='Foto del hotel'></img>
