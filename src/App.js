@@ -9,14 +9,14 @@ import React from 'react'
 
 function App() {
 	const [country, setCountry] = useState('select')
-	const handlerCountry = (e) => setCountry(e.target.value)
 	const [size, setSize] = useState('select')
-	const handlerSize = (e) => setSize(e.target.value)
 	const [price, setPrice] = useState('select')
-	const handlerPrice = (e) => setPrice(e.target.value)
 	const [dateFrom, setDateFrom] = useState('')
-	const handlerDateFrom = (e) => setDateFrom(e.target.value)
 	const [dateTo, setDateTo] = useState('')
+	const handlerCountry = (e) => setCountry(e.target.value)
+	const handlerSize = (e) => setSize(e.target.value)
+	const handlerPrice = (e) => setPrice(e.target.value)
+	const handlerDateFrom = (e) => setDateFrom(e.target.value)
 	const handlerDateTo = (e) => setDateTo(e.target.value)
 
 	const newHotelsData = hotelsData.filter((hotel) => {
