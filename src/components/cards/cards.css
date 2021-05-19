@@ -72,7 +72,9 @@
 .dolar-img {
     width: 25px;
     height: 25px;
-    display: flex ;
-    
+    display: flex;
 }
 
+.dolar-img:first-child {
+    margin-left: 15px;
+}
