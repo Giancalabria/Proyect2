@@ -3,7 +3,7 @@ import { Footer } from './components/footer/footer'
 import { Header } from './components/header/header'
 import { Filter } from './components/filter/filter'
 import { hotelsData } from './components/data/data'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Results } from './components/results/results'
 import React from 'react'
 
@@ -13,32 +13,41 @@ function App() {
 	const [price, setPrice] = useState('select')
 	const [dateFrom, setDateFrom] = useState('')
 	const [dateTo, setDateTo] = useState('')
+	const [filteredHotels, setFilteredHotels] = useState([])
 	const handlerCountry = (e) => setCountry(e.target.value)
 	const handlerSize = (e) => setSize(e.target.value)
 	const handlerPrice = (e) => setPrice(e.target.value)
 	const handlerDateFrom = (e) => setDateFrom(e.target.value)
 	const handlerDateTo = (e) => setDateTo(e.target.value)
 
-	const newHotelsData = hotelsData.filter((hotel) => {
-		return (
-			(country === 'todos' || country === 'select'
+	useEffect(() => {
+		const countryFilter = (hotel) => {
+			return country === 'todos' || country === 'select'
 				? true
-				: country === hotel.country) &&
-			(size === 'todos' || size === 'select'
+				: country === hotel.country
+		}
+		const sizeFilter = (hotel) => {
+			return size === 'todos' || size === 'select'
 				? true
 				: size === 'chico'
 				? hotel.rooms < 11
 				: size === 'mediano'
 				? hotel.rooms > 10 && hotel.rooms < 21
-				: hotel.rooms > 20) &&
-			(price === 'todos' || price === 'select'
+				: hotel.rooms > 20
+		}
+		const priceFilter = (hotel) => {
+			return price === 'todos' || price === 'select'
 				? true
-				: parseInt(price, 0) === hotel.price)
-		)
-	})
+				: parseInt(price, 0) === hotel.price
+		}
+		const filteredHotels = hotelsData.filter((hotel) => {
+			return countryFilter(hotel) && priceFilter(hotel) && sizeFilter(hotel)
+		})
+		setFilteredHotels(filteredHotels)
+	}, [price, country, size])
 
 	const disponibilidad = []
-	newHotelsData.map((hotel) =>
+	filteredHotels.map((hotel) =>
 		disponibilidad.push({
 			'nombre:': hotel.name,
 			'desde:': new Date(hotel.availabilityFrom),
@@ -51,6 +60,7 @@ function App() {
 		setPrice('select')
 		setSize('select')
 	}
+
 	return (
 		<div>
 			<Header dateFrom={dateFrom} />
@@ -68,7 +78,7 @@ function App() {
 				resetFilters={resetFilters}
 			/>
 			<div className='hoteles'>
-				<Results newHotelsData={newHotelsData} price={price} />
+				<Results filteredHotels={filteredHotels} price={price} />
 			</div>
 			<Footer />
 		</div>

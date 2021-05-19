@@ -7,7 +7,7 @@ export function Results(props) {
 	}
 	return (
 		<div className='results'>
-			{props.newHotelsData.map((objeto, index) => (
+			{props.filteredHotels.map((objeto, index) => (
 				<Cards
 					key={index}
 					name={objeto.name}
