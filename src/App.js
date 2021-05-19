@@ -46,7 +46,11 @@ function App() {
 		})
 	)
 	console.table(disponibilidad)
-
+	const resetFilters = () => {
+		setCountry('select')
+		setPrice('select')
+		setSize('select')
+	}
 	return (
 		<div>
 			<Header dateFrom={dateFrom} />
@@ -61,6 +65,7 @@ function App() {
 				handlerDateFrom={handlerDateFrom}
 				dateTo={dateTo}
 				handlerDateTo={handlerDateTo}
+				resetFilters={resetFilters}
 			/>
 			<div className='hoteles'>
 				<Results newHotelsData={newHotelsData} price={price} />

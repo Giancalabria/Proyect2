@@ -94,6 +94,9 @@ export function Filter(props) {
 					</option>
 				</select>
 			</div>
+			<button className='button' onClick={props.resetFilters}>
+				Reset
+			</button>
 		</div>
 	)
 }
