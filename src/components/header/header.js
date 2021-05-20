@@ -38,11 +38,11 @@ export function Header(props) {
 			<div className='text-div'>
 				<h2 className='title'> Trivago 2.0</h2>
 				<p className='text'>
-					{`Buscando hoteles de 
+					{`Buscando hoteles  
 					${
 						props.size === 'todos' || props.size === 'select'
-							? 'cualquier tamaño'
-							: props.size
+							? ' de cualquier tamaño'
+							: props.size + 's'
 					}, 
 					de precio ${
 						props.price === 'todos' || props.price === 'select'
