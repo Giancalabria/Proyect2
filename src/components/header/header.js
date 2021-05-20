@@ -37,7 +37,7 @@ export function Header(props) {
 	return (
 		<div className='header'>
 			<div className='text-div'>
-				<h2 className='title'> Hoteles</h2>
+				<h2 className='title'> Trivago 2.0</h2>
 				<p className='text'>
 					{`Buscando hoteles de 
 					${
