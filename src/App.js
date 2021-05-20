@@ -41,6 +41,8 @@ function App() {
 	const handlerDateTo = (e) => {
 		if (new Date(e.target.value) >= new Date(dateFrom)) {
 			setDateTo(e.target.value)
+		} else if (dateFrom === '') {
+			alert('Debe ingresar una fecha de llegada primero')
 		} else {
 			alert(`La fecha seleccionada no puede ser anterior al ${dateFrom}`)
 		}

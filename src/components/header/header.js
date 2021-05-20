@@ -1,5 +1,4 @@
 import './header.css'
-import { useEffect } from 'react'
 
 export function Header(props) {
 	function naturalDate(date) {
