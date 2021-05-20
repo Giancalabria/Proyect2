@@ -17,8 +17,34 @@ function App() {
 	const handlerCountry = (e) => setCountry(e.target.value)
 	const handlerSize = (e) => setSize(e.target.value)
 	const handlerPrice = (e) => setPrice(e.target.value)
-	const handlerDateFrom = (e) => setDateFrom(e.target.value)
-	const handlerDateTo = (e) => setDateTo(e.target.value)
+
+	function todayDate() {
+		let d = new Date(),
+			month = '' + (d.getMonth() + 1),
+			day = '' + d.getDate(),
+			year = d.getFullYear()
+
+		if (month.length < 2) month = '0' + month
+		if (day.length < 2) day = '0' + day
+
+		return [year, month, day].join('-')
+	}
+
+	const handlerDateFrom = (e) => {
+		if (new Date(e.target.value) < new Date(todayDate())) {
+			alert(`La fecha seleccionada no puede ser anterior al ${todayDate()}`)
+		} else {
+			setDateFrom(e.target.value)
+		}
+	}
+
+	const handlerDateTo = (e) => {
+		if (new Date(e.target.value) >= new Date(dateFrom)) {
+			setDateTo(e.target.value)
+		} else {
+			alert(`La fecha seleccionada no puede ser anterior al ${dateFrom}`)
+		}
+	}
 
 	useEffect(() => {
 		const countryFilter = (hotel) => {
@@ -40,30 +66,42 @@ function App() {
 				? true
 				: parseInt(price, 0) === hotel.price
 		}
+		const dateFilter = (hotel) => {
+			return !dateFrom || !dateTo
+				? true
+				: hotel.availabilityFrom <= new Date(dateFrom).valueOf() &&
+						hotel.availabilityTo >= new Date(dateFrom).valueOf() &&
+						hotel.availabilityFrom <= new Date(dateTo).valueOf() &&
+						hotel.availabilityTo >= new Date(dateTo).valueOf()
+		}
 		const filteredHotels = hotelsData.filter((hotel) => {
-			return countryFilter(hotel) && priceFilter(hotel) && sizeFilter(hotel)
+			return (
+				countryFilter(hotel) &&
+				priceFilter(hotel) &&
+				sizeFilter(hotel) &&
+				dateFilter(hotel)
+			)
 		})
 		setFilteredHotels(filteredHotels)
-	}, [price, country, size])
+	}, [price, country, size, dateFrom, dateTo])
 
-	const disponibilidad = []
-	filteredHotels.map((hotel) =>
-		disponibilidad.push({
-			'nombre:': hotel.name,
-			'desde:': new Date(hotel.availabilityFrom),
-			'hasta:': new Date(hotel.availabilityTo),
-		})
-	)
-	console.table(disponibilidad)
 	const resetFilters = () => {
 		setCountry('select')
 		setPrice('select')
 		setSize('select')
+		setDateFrom('')
+		setDateTo('')
 	}
 
 	return (
 		<div>
-			<Header dateFrom={dateFrom} />
+			<Header
+				dateFrom={dateFrom}
+				dateTo={dateTo}
+				size={size}
+				price={price}
+				country={country}
+			/>
 			<Filter
 				country={country}
 				handlerCountry={handlerCountry}
