@@ -117,9 +117,9 @@ function App() {
 				handlerDateTo={handlerDateTo}
 				resetFilters={resetFilters}
 			/>
-			<div className='hoteles'>
+			<section className='hoteles'>
 				<Results filteredHotels={filteredHotels} price={price} />
-			</div>
+			</section>
 			<Footer />
 		</div>
 	)

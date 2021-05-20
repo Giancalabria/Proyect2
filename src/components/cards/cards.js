@@ -4,7 +4,7 @@ export function Cards(props) {
 	const priceQuantity = [...Array(props.price).keys()]
 
 	return (
-		<div className='cards'>
+		<article className='cards'>
 			<img className='image' src={props.photo} alt='Foto del hotel'></img>
 			<h3 className='title-cards'>{props.name}</h3>
 			<p className='text-cards'>{props.description}</p>
@@ -39,6 +39,6 @@ export function Cards(props) {
 			<button className='book' onClick={props.onBooked}>
 				Reservá ahora
 			</button>
-		</div>
+		</article>
 	)
 }

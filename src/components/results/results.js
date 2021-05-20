@@ -18,7 +18,7 @@ export function Results(props) {
 			onBooked={() => onBooked(objeto.name)}
 		/>
 	))
-	const check = (props) => {
+	const checkHotels = (props) => {
 		if (mappedHotels.length >= 1) {
 			return mappedHotels
 		} else {
@@ -33,5 +33,5 @@ export function Results(props) {
 			)
 		}
 	}
-	return <div className='results'>{check()}</div>
+	return <div className='results'>{checkHotels()}</div>
 }

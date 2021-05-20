@@ -34,7 +34,7 @@ export function Header(props) {
 		return `${day} de ${month} del ${year}`
 	}
 	return (
-		<div className='header'>
+		<header className='header'>
 			<div className='text-div'>
 				<h2 className='title'> Trivago 2.0</h2>
 				<p className='text'>
@@ -66,6 +66,6 @@ export function Header(props) {
 						}`}
 				</p>
 			</div>
-		</div>
+		</header>
 	)
 }

@@ -29,7 +29,7 @@ export function Filter(props) {
 						Seleccione un pais
 					</option>
 					<option className='option' value='todos'>
-						Todos
+						Todos los paises
 					</option>
 					<option className='option' value='Brasil'>
 						Brasil
