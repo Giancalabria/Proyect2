@@ -7,30 +7,44 @@ export function Header(props) {
 			day = d.getDate(),
 			year = d.getFullYear()
 
-		if (month === 0) {
-			month = 'Enero'
-		} else if (month === 1) {
-			month = 'Febrero'
-		} else if (month === 2) {
-			month = 'Marzo'
-		} else if (month === 3) {
-			month = 'Abril'
-		} else if (month === 4) {
-			month = 'Mayo'
-		} else if (month === 5) {
-			month = 'Junio'
-		} else if (month === 6) {
-			month = 'Julio'
-		} else if (month === 7) {
-			month = 'Agosto'
-		} else if (month === 8) {
-			month = 'Septiembre'
-		} else if (month === 9) {
-			month = 'Octubre'
-		} else if (month === 10) {
-			month = 'Noviembre'
-		} else month = 'Diciembre'
-
+		switch (month) {
+			case 0:
+				month = 'Enero'
+				break
+			case 1:
+				month = 'Febrero'
+				break
+			case 2:
+				month = 'Marzo'
+				break
+			case 3:
+				month = 'Abril'
+				break
+			case 4:
+				month = 'Mayo'
+				break
+			case 5:
+				month = 'Junio'
+				break
+			case 6:
+				month = 'Julio'
+				break
+			case 7:
+				month = 'Agosto'
+				break
+			case 8:
+				month = 'Septiembre'
+				break
+			case 9:
+				month = 'Octubre'
+				break
+			case 10:
+				month = 'Noviembre'
+				break
+			case 11:
+				month = 'Diciembre'
+				break
+		}
 		return `${day} de ${month} del ${year}`
 	}
 	return (
