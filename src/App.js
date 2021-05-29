@@ -62,6 +62,19 @@ function App() {
 				: size === 'mediano'
 				? hotel.rooms > 10 && hotel.rooms < 21
 				: hotel.rooms > 20
+
+			// const sizeChecker = () => {
+			// 	if (size === 'todos' || size === 'select') {
+			// 		true
+			// 	} else if (size === 'chico') {
+			// 		hotel.rooms < 11
+			// 	} else if (size === 'mediano') {
+			// 		hotel.rooms > 10 && hotel.rooms < 21
+			// 	} else {
+			// 		hotel.rooms > 20
+			// 	}
+			// }
+			// return sizeChecker
 		}
 		const priceFilter = (hotel) => {
 			return price === 'todos' || price === 'select'
