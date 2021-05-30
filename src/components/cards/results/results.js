@@ -1,5 +1,5 @@
 import React from 'react'
-import { Cards } from '../cards/cards'
+import { Cards } from '../cards'
 import './results.css'
 export function Results(props) {
 	function onBooked(name) {

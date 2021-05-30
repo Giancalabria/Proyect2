@@ -4,7 +4,7 @@ import { Header } from './components/header/header'
 import { Filter } from './components/filter/filter'
 import { hotelsData } from './data/data'
 import { useEffect, useState } from 'react'
-import { Results } from './components/results/results'
+import { Results } from './components/cards/results/results'
 import React from 'react'
 
 function App() {
