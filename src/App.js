@@ -89,19 +89,13 @@ function App() {
 				: parseInt(price, 0) === hotel.price
 		}
 		const dateFilter = (hotel) => {
-			const availabilityFromNoMinutes = new Date(hotel.availabilityFrom)
-			const availabilityToNoMinutes = new Date(hotel.availabilityTo)
-				.setMinutes(0)
-				.valueOf()
-			console.log(availabilityToNoMinutes, 'Hola')
 			return !dateFrom || !dateTo
 				? true
-				: availabilityFromNoMinutes <= new Date(dateFrom).valueOf() &&
-						availabilityToNoMinutes >= new Date(dateFrom).valueOf() &&
-						availabilityFromNoMinutes <= new Date(dateTo).valueOf() &&
-						availabilityToNoMinutes >= new Date(dateTo).valueOf()
+				: hotel.availabiltyFrom <= new Date(dateFrom).valueOf() &&
+						hotel.availabiltyTo >= new Date(dateFrom).valueOf() &&
+						hotel.availabiltyFrom <= new Date(dateTo).valueOf() &&
+						hotel.availabiltyTo >= new Date(dateTo).valueOf()
 		}
-
 		const filteredHotels = hotelsData.filter((hotel) => {
 			return (
 				countryFilter(hotel) &&

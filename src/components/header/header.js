@@ -44,6 +44,8 @@ export function Header(props) {
 			case 11:
 				month = 'Diciembre'
 				break
+			default:
+				break
 		}
 		return `${day} de ${month} del ${year}`
 	}

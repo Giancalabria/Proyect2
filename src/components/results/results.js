@@ -18,7 +18,7 @@ export function Results(props) {
 			onBooked={() => onBooked(objeto.name)}
 		/>
 	))
-	const checkHotels = (props) => {
+	const checkHotels = () => {
 		if (mappedHotels.length >= 1) {
 			return mappedHotels
 		} else {
