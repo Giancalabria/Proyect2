@@ -5,6 +5,7 @@ import { Filter } from './components/filter/filter'
 import { hotelsData } from './data/data'
 import { useEffect, useState } from 'react'
 import { Results } from './components/results/results'
+import { stringToUnixDate, stringToday } from './utils/date'
 import React from 'react'
 
 function App() {
@@ -18,24 +19,13 @@ function App() {
 	const handlerSize = (e) => setSize(e.target.value)
 	const handlerPrice = (e) => setPrice(e.target.value)
 
-	function todayDate() {
-		let d = new Date(),
-			month = '' + (d.getMonth() + 1),
-			day = '' + d.getDate(),
-			year = d.getFullYear()
-
-		if (month.length < 2) month = '0' + month
-		if (day.length < 2) day = '0' + day
-
-		return [year, month, day].join('-')
-	}
-
 	const handlerDateFrom = (e) => {
 		switch (true) {
-			case new Date(e.target.value) < new Date(todayDate()):
-				alert(`La fecha seleccionada no puede ser anterior al ${todayDate()}`)
+			case stringToUnixDate(e.target.value) <
+				new Date().setHours(0, 0, 0, 0, 0):
+				alert(`La fecha seleccionada no puede ser anterior al ${stringToday()}`)
 				break
-			case new Date(e.target.value) > new Date(dateTo):
+			case stringToUnixDate(e.target.value) > stringToUnixDate(dateTo):
 				setDateTo('')
 				setDateFrom(e.target.value)
 				break
@@ -47,13 +37,13 @@ function App() {
 
 	const handlerDateTo = (e) => {
 		switch (true) {
-			case new Date(e.target.value) >= new Date(dateFrom):
+			case stringToUnixDate(e.target.value) >= stringToUnixDate(dateFrom):
 				setDateTo(e.target.value)
 				break
 			case dateFrom === '':
 				alert('Debe ingresar una fecha de llegada primero')
 				break
-			case new Date(e.target.value) < new Date(dateFrom):
+			case stringToUnixDate(e.target.value) < stringToUnixDate(dateFrom):
 				alert(`La fecha seleccionada no puede ser anterior al ${dateFrom}`)
 				break
 			default:
@@ -91,10 +81,8 @@ function App() {
 		const dateFilter = (hotel) => {
 			return !dateFrom || !dateTo
 				? true
-				: hotel.availabiltyFrom <= new Date(dateFrom).valueOf() &&
-						hotel.availabiltyTo >= new Date(dateFrom).valueOf() &&
-						hotel.availabiltyFrom <= new Date(dateTo).valueOf() &&
-						hotel.availabiltyTo >= new Date(dateTo).valueOf()
+				: stringToUnixDate(dateFrom) >= hotel.availabilityFrom &&
+						stringToUnixDate(dateTo) <= hotel.availabilityTo
 		}
 		const filteredHotels = hotelsData.filter((hotel) => {
 			return (
@@ -116,7 +104,7 @@ function App() {
 	}
 
 	return (
-		<div>
+		<main id='App'>
 			<Header
 				dateFrom={dateFrom}
 				dateTo={dateTo}
@@ -141,7 +129,7 @@ function App() {
 				<Results filteredHotels={filteredHotels} price={price} />
 			</section>
 			<Footer />
-		</div>
+		</main>
 	)
 }
 
