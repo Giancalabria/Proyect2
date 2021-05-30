@@ -2,7 +2,7 @@ import './App.css'
 import { Footer } from './components/footer/footer'
 import { Header } from './components/header/header'
 import { Filter } from './components/filter/filter'
-import { hotelsData, today } from './components/data/data'
+import { hotelsData } from './data/data'
 import { useEffect, useState } from 'react'
 import { Results } from './components/results/results'
 import React from 'react'
@@ -31,20 +31,33 @@ function App() {
 	}
 
 	const handlerDateFrom = (e) => {
-		if (new Date(e.target.value) < new Date(todayDate())) {
-			alert(`La fecha seleccionada no puede ser anterior al ${todayDate()}`)
-		} else {
-			setDateFrom(e.target.value)
+		switch (true) {
+			case new Date(e.target.value) < new Date(todayDate()):
+				alert(`La fecha seleccionada no puede ser anterior al ${todayDate()}`)
+				break
+			case new Date(e.target.value) > new Date(dateTo):
+				setDateTo('')
+				setDateFrom(e.target.value)
+				break
+			default:
+				setDateFrom(e.target.value)
+				break
 		}
 	}
 
 	const handlerDateTo = (e) => {
-		if (new Date(e.target.value) >= new Date(dateFrom)) {
-			setDateTo(e.target.value)
-		} else if (dateFrom === '') {
-			alert('Debe ingresar una fecha de llegada primero')
-		} else {
-			alert(`La fecha seleccionada no puede ser anterior al ${dateFrom}`)
+		switch (true) {
+			case new Date(e.target.value) >= new Date(dateFrom):
+				setDateTo(e.target.value)
+				break
+			case dateFrom === '':
+				alert('Debe ingresar una fecha de llegada primero')
+				break
+			case new Date(e.target.value) < new Date(dateFrom):
+				alert(`La fecha seleccionada no puede ser anterior al ${dateFrom}`)
+				break
+			default:
+				break
 		}
 	}
 
@@ -56,15 +69,15 @@ function App() {
 		}
 
 		const sizeFilter = (hotel) => {
-			switch (true) {
-				case size === 'todos':
-				case size === 'select':
+			switch (size) {
+				case 'todos':
+				case 'select':
 					return true
-				case size === 'chico':
+				case 'chico':
 					return hotel.rooms < 11
-				case size === 'mediano':
+				case 'mediano':
 					return hotel.rooms > 10 && hotel.rooms < 21
-				case size === 'grande':
+				case 'grande':
 					return hotel.rooms > 20
 				default:
 					return true
@@ -76,13 +89,19 @@ function App() {
 				: parseInt(price, 0) === hotel.price
 		}
 		const dateFilter = (hotel) => {
+			const availabilityFromNoMinutes = new Date(hotel.availabilityFrom)
+			const availabilityToNoMinutes = new Date(hotel.availabilityTo)
+				.setMinutes(0)
+				.valueOf()
+			console.log(availabilityToNoMinutes, 'Hola')
 			return !dateFrom || !dateTo
 				? true
-				: hotel.availabilityFrom <= new Date(dateFrom).valueOf() &&
-						hotel.availabilityTo >= new Date(dateFrom).valueOf() &&
-						hotel.availabilityFrom <= new Date(dateTo).valueOf() &&
-						hotel.availabilityTo >= new Date(dateTo).valueOf()
+				: availabilityFromNoMinutes <= new Date(dateFrom).valueOf() &&
+						availabilityToNoMinutes >= new Date(dateFrom).valueOf() &&
+						availabilityFromNoMinutes <= new Date(dateTo).valueOf() &&
+						availabilityToNoMinutes >= new Date(dateTo).valueOf()
 		}
+
 		const filteredHotels = hotelsData.filter((hotel) => {
 			return (
 				countryFilter(hotel) &&
@@ -93,7 +112,6 @@ function App() {
 		})
 		setFilteredHotels(filteredHotels)
 	}, [price, country, size, dateFrom, dateTo])
-	console.log('new Date(dateFrom).valueOf()', new Date(dateFrom).valueOf())
 
 	const resetFilters = () => {
 		setCountry('select')
