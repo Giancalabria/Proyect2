@@ -2,7 +2,7 @@ import './App.css'
 import { Footer } from './components/footer/footer'
 import { Header } from './components/header/header'
 import { Filter } from './components/filter/filter'
-import { hotelsData } from './components/data/data'
+import { hotelsData, today } from './components/data/data'
 import { useEffect, useState } from 'react'
 import { Results } from './components/results/results'
 import React from 'react'
@@ -54,27 +54,21 @@ function App() {
 				? true
 				: country === hotel.country
 		}
-		const sizeFilter = (hotel) => {
-			return size === 'todos' || size === 'select'
-				? true
-				: size === 'chico'
-				? hotel.rooms < 11
-				: size === 'mediano'
-				? hotel.rooms > 10 && hotel.rooms < 21
-				: hotel.rooms > 20
 
-			// const sizeChecker = () => {
-			// 	if (size === 'todos' || size === 'select') {
-			// 		true
-			// 	} else if (size === 'chico') {
-			// 		hotel.rooms < 11
-			// 	} else if (size === 'mediano') {
-			// 		hotel.rooms > 10 && hotel.rooms < 21
-			// 	} else {
-			// 		hotel.rooms > 20
-			// 	}
-			// }
-			// return sizeChecker
+		const sizeFilter = (hotel) => {
+			switch (true) {
+				case size === 'todos':
+				case size === 'select':
+					return true
+				case size === 'chico':
+					return hotel.rooms < 11
+				case size === 'mediano':
+					return hotel.rooms > 10 && hotel.rooms < 21
+				case size === 'grande':
+					return hotel.rooms > 20
+				default:
+					return true
+			}
 		}
 		const priceFilter = (hotel) => {
 			return price === 'todos' || price === 'select'
@@ -99,6 +93,7 @@ function App() {
 		})
 		setFilteredHotels(filteredHotels)
 	}, [price, country, size, dateFrom, dateTo])
+	console.log('new Date(dateFrom).valueOf()', new Date(dateFrom).valueOf())
 
 	const resetFilters = () => {
 		setCountry('select')
