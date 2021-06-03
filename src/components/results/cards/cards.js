@@ -1,42 +1,46 @@
-import './cards.css'
+import styles from './cards.module.scss'
 
 export function Cards(props) {
 	const priceQuantity = [...Array(props.price).keys()]
 
 	return (
-		<article className='cards'>
-			<img className='image' src={props.photo} alt='Foto del hotel'></img>
-			<h3 className='title-cards'>{props.name}</h3>
-			<p className='text-cards'>{props.description}</p>
-			<div className='location-div'>
+		<article className={styles.cards}>
+			<img
+				className={styles.image}
+				src={props.photo}
+				alt='Foto del hotel'
+			></img>
+			<h3 className={styles.title}>{props.name}</h3>
+			<p className={styles.text}>{props.description}</p>
+			<div className={styles.location}>
 				<img
 					src='./images/location.svg'
-					className='location-img'
+					className={styles.location_image}
 					alt='Icono de localización'
 				></img>
-				<p className='extra-info location-text'>
+				<p className={styles.extra_info}>
 					{props.city}, {props.country}
 				</p>
 			</div>
-			<div className='room-div'>
+			<div className={styles.room}>
 				<img
 					src='./images/room.svg'
-					className='room-img'
+					className={styles.room_image}
 					alt='Icono de un cuarto'
 				></img>
-				<p className='extra-info rooms-text'>{props.rooms}</p>
+				<p className={styles.extra_info}>{props.rooms}</p>
 			</div>
-			<div className='image-div'>
-				{priceQuantity.map((price, index) => (
+			<div className={styles.dolar}>
+				{priceQuantity.map((index) => (
 					<img
 						key={index}
-						className='dolar-img'
+						className={styles.dolar_image}
 						src='./images/dolar.svg'
 						alt='Icono del simbolo peso'
 					/>
 				))}
 			</div>
-			<button className='book' onClick={props.onBooked}>
+			<button className={styles.book} onClick={props.onBooked}>
 				Reservá ahora
 			</button>
 		</article>

@@ -1,4 +1,4 @@
-import './App.css'
+import styles from './App.module.scss'
 import { Footer } from './components/footer/footer'
 import { Header } from './components/header/header'
 import { Filter } from './components/filter/filter'
@@ -125,7 +125,7 @@ function App() {
 				handlerDateTo={handlerDateTo}
 				resetFilters={resetFilters}
 			/>
-			<section className='hoteles'>
+			<section className={styles.hoteles}>
 				<Results filteredHotels={filteredHotels} price={price} />
 			</section>
 			<Footer />

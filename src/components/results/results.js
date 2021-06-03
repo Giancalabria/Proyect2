@@ -1,6 +1,6 @@
 import React from 'react'
 import { Cards } from './cards/cards'
-import './results.css'
+import styles from './results.module.scss'
 export function Results(props) {
 	function onBooked(name) {
 		alert(` El hotel "${name}" se ha reservado satisfactoriamente`)
@@ -23,15 +23,15 @@ export function Results(props) {
 			return mappedHotels
 		} else {
 			return (
-				<div className='div-error'>
-					<h3 className='title-error'>
+				<div className={styles.error}>
+					<h3>
 						Lo sentimos, no se han encontrado hoteles con los filtros
 						seleccionados
 					</h3>
-					<p className='text-error'>Por favor, inténtelo de nuevo</p>
+					<p>Por favor, inténtelo de nuevo</p>
 				</div>
 			)
 		}
 	}
-	return <div className='results'>{checkHotels()}</div>
+	return <div className={styles.results}>{checkHotels()}</div>
 }

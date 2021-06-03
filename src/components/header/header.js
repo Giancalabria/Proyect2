@@ -1,4 +1,4 @@
-import './header.css'
+import styles from './header.module.scss'
 
 export function Header(props) {
 	function naturalDate(date) {
@@ -50,10 +50,10 @@ export function Header(props) {
 		return `${day} de ${month} del ${year}`
 	}
 	return (
-		<header className='header'>
-			<div className='text-div'>
-				<h2 className='title'> Trivago 2.0</h2>
-				<p className='text'>
+		<header className={styles.header}>
+			<div className={styles.text_container}>
+				<h2 className={styles.title}> Trivago 2.0</h2>
+				<p className={styles.text}>
 					{`Buscando hoteles  
 					${
 						props.size === 'todos' || props.size === 'select'
