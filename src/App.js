@@ -10,6 +10,7 @@ import React from 'react'
 
 function App() {
 	const [country, setCountry] = useState('select')
+	const [name, setName] = useState('')
 	const [size, setSize] = useState('select')
 	const [price, setPrice] = useState('select')
 	const [dateFrom, setDateFrom] = useState('')
@@ -18,7 +19,7 @@ function App() {
 	const handlerCountry = (e) => setCountry(e.target.value)
 	const handlerSize = (e) => setSize(e.target.value)
 	const handlerPrice = (e) => setPrice(e.target.value)
-
+	const handlerName = (e) => setName(e.target.value)
 	const handlerDateFrom = (e) => {
 		switch (true) {
 			case stringToUnixDate(e.target.value) <
@@ -52,6 +53,12 @@ function App() {
 	}
 
 	useEffect(() => {
+		const nameFilter = (hotel) => {
+			return name === ''
+				? true
+				: hotel.name.toUpperCase().includes(name.toUpperCase())
+		}
+
 		const countryFilter = (hotel) => {
 			return country === 'todos' || country === 'select'
 				? true
@@ -89,11 +96,12 @@ function App() {
 				countryFilter(hotel) &&
 				priceFilter(hotel) &&
 				sizeFilter(hotel) &&
-				dateFilter(hotel)
+				dateFilter(hotel) &&
+				nameFilter(hotel)
 			)
 		})
 		setFilteredHotels(filteredHotels)
-	}, [price, country, size, dateFrom, dateTo])
+	}, [price, country, size, dateFrom, dateTo, name])
 
 	const resetFilters = () => {
 		setCountry('select')
@@ -101,6 +109,7 @@ function App() {
 		setSize('select')
 		setDateFrom('')
 		setDateTo('')
+		setName('')
 	}
 
 	return (
@@ -123,6 +132,8 @@ function App() {
 				handlerDateFrom={handlerDateFrom}
 				dateTo={dateTo}
 				handlerDateTo={handlerDateTo}
+				name={name}
+				handlerName={handlerName}
 				resetFilters={resetFilters}
 			/>
 			<section className={styles.hoteles}>

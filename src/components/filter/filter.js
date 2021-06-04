@@ -6,6 +6,15 @@ export function Filter(props) {
 			<div className={styles.filter_container}>
 				<input
 					className={styles.input}
+					type='text'
+					value={props.name}
+					onChange={props.handlerName}
+					placeholder='Ingrese el nombre del hotel'
+				></input>
+			</div>
+			<div className={styles.filter_container}>
+				<input
+					className={styles.input}
 					type='date'
 					value={props.dateFrom}
 					onChange={props.handlerDateFrom}
